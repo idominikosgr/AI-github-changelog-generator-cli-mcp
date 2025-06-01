@@ -1,0 +1,44 @@
+{
+  "name": "ai-changelog-generator",
+  "version": "1.0.0",
+  "description": "AI-powered changelog generator with git integration",
+  "main": "generate-ai-changelog.js",
+  "bin": {
+    "ai-changelog": "./generate-ai-changelog.js",
+    "ai-changelog-enhanced": "./enhanced-changelog-generator-v2.js"
+  },
+  "scripts": {
+    "start": "node cli.js",
+    "changelog": "node generate-ai-changelog.js",
+    "enhanced": "node enhanced-changelog-generator-v2.js",
+    "demo": "node demo-interactive-changelog.js",
+    "test": "node test-ai-provider.js",
+    "setup": "node setup-azure-openai.js",
+    "config:create": "node config.js create-sample",
+    "config:validate": "node config.js validate",
+    "templates:test": "node templates.js",
+    "git:info": "node git-manager.js info"
+  },
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "dotenv": "^16.0.3",
+    "inquirer": "^9.2.0",
+    "yargs": "^17.7.0"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  },
+  "keywords": [
+    "changelog",
+    "git",
+    "ai",
+    "automation",
+    "openai",
+    "azure"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
