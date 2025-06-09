@@ -6,14 +6,14 @@
 </p>
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/@idominikosgr/ai-changelog-generator">
-    <img src="https://img.shields.io/npm/v/@idominikosgr/ai-changelog-generator.svg" alt="npm version">
+  <a href="https://www.npmjs.com/package/ai-changelog-generator-idominikosgr">
+    <img src="https://img.shields.io/npm/v/ai-changelog-generator-idominikosgr.svg" alt="npm version">
   </a>
   <a href="https://github.com/idominikosgr/AI-Git-Changelog-Generator/blob/main/LICENSE">
-    <img src="https://img.shields.io/npm/l/@idominikosgr/ai-changelog-generator.svg" alt="license">
+    <img src="https://img.shields.io/npm/l/ai-changelog-generator-idominikosgr.svg" alt="license">
   </a>
   <a href="https://nodejs.org/">
-    <img src="https://img.shields.io/node/v/@idominikosgr/ai-changelog-generator.svg" alt="node version">
+    <img src="https://img.shields.io/node/v/ai-changelog-generator-idominikosgr.svg" alt="node version">
   </a>
 </p>
 
@@ -35,10 +35,10 @@
 
 ```sh
 # Install globally for CLI use
-npm install -g @idominikosgr/ai-changelog-generator
+npm install -g ai-changelog-generator-idominikosgr
 
 # Or locally in your project
-npm install @idominikosgr/ai-changelog-generator
+npm install ai-changelog-generator-idominikosgr
 ```
 
 ### Basic Usage
@@ -490,7 +490,7 @@ npm run changelog -- --help # See all options
 # GitHub Actions example
 - name: Generate Changelog
   run: |
-    npx @idominikosgr/ai-changelog-generator --since ${{ github.event.before }}
+    npx ai-changelog-generator-idominikosgr --since ${{ github.event.before }}
     git add CHANGELOG.md
     git commit -m "docs: update changelog"
 ```

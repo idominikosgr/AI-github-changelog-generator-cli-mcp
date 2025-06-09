@@ -1,5 +1,5 @@
 {
-  "name": "@idominikosgr/ai-changelog-generator",
+  "name": "ai-changelog-generator-idominikosgr",
   "version": "2.3.0",
   "description": "AI-powered changelog generator with MCP server support - works with OpenAI GPT-4.1 and Azure OpenAI with reasoning models",
   "main": "lib/ai-changelog-generator.js",
