@@ -8,6 +8,11 @@
 - [ ] **Centralize validation logic** - Create validation utilities for git repos, AI providers, models
 - [ ] **Rate limiting abstraction** - Create rate limiter utility for AI API calls
 
+### MCP Server Feature Parity
+- [x] **Working Directory Changelog Generation** - Added `generate_changelog_from_changes` MCP tool ✅ *Completed: Full feature parity between CLI and MCP server*
+- [x] **Attribution Support** - Fixed missing `includeAttribution` parameter in MCP tools ✅ *Completed: All MCP tools now support attribution control*
+- [x] **File Writing Behavior** - MCP tools now write `AI_CHANGELOG.md` to project root ✅ *Completed: True feature parity with CLI file output behavior*
+
 ### Utility Classes & Patterns
 - [ ] **PromptBuilder utility** - Centralize AI prompt generation with templates
 - [ ] **ResponseParser utility** - Standardize AI response parsing and validation

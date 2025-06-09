@@ -5,6 +5,49 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.4.0] - 2025-01-13
+
+### Added
+- **Complete MCP Server Feature Parity**: Achieved 100% feature parity between CLI and MCP server
+  - New `generate_changelog_from_changes` MCP tool for working directory changelog generation
+  - Equivalent to CLI's `--analyze` functionality with full AI-powered changelog creation
+  - Supports all analysis modes (standard, detailed, enterprise) and model overrides
+- **File Writing Behavior**: MCP tools now write `AI_CHANGELOG.md` files to project root
+  - Both `generate_changelog` and `generate_changelog_from_changes` create persistent files
+  - Ensures consistent behavior and proper attribution preservation
+  - Prevents chat AI from modifying or stripping attribution from official output
+- **Enhanced Attribution Support**: Fixed missing `includeAttribution` parameter in MCP tools
+  - Added `includeAttribution` parameter to `analyze_current_changes` MCP tool schema
+  - All MCP tools now support attribution control with proper defaults
+  - Maintains promotional attribution while providing opt-out option
+
+### Changed
+- **MCP Tool Documentation**: Updated README with comprehensive MCP tool reference
+  - Clarified distinction between analysis tools and changelog generation tools
+  - Added file writing behavior documentation and feature parity notes
+  - Updated examples to demonstrate working directory changelog generation
+- **Tool Schema Enhancement**: Extended MCP tool schemas with missing parameters
+  - More consistent parameter handling across all MCP tools
+  - Better validation and documentation for tool parameters
+
+### Fixed
+- **Attribution Consistency**: Resolved discrepancy between CLI and MCP attribution behavior
+  - MCP tools now include attribution footer by default, matching CLI behavior
+  - Fixed missing attribution in working directory analysis workflows
+- **Feature Gap**: Eliminated functionality differences between CLI and MCP interfaces
+  - MCP server can now generate changelogs from working directory changes
+  - No more reliance on chat AI interpretation of analysis data
+
+### Technical Implementation
+- **New MCP Methods**: Added `generateChangelogFromChanges()` and supporting helper methods
+  - `generateWorkingDirChangelog()`: AI-powered changelog generation from file changes
+  - `generateBasicChangelogFromChanges()`: Rule-based fallback for working directory changes
+  - `getChangeDescription()`: Utility for describing file change types
+- **File I/O Integration**: Added changelog file writing to MCP tool workflows
+  - Consistent `AI_CHANGELOG.md` output across CLI and MCP interfaces
+  - Proper error handling for file writing operations
+  - Enhanced metadata with file path information
+
 ## [2.3.1] - 2025-01-08
 
 ### Added

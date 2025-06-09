@@ -21,7 +21,7 @@
 
 ## 🚀 TL;DR - Quick Start
 
-**What it does:** AI-powered changelog generation from git commits + MCP server for Claude Desktop
+**What it does:** AI-powered changelog generation from git commits + working directory changes + MCP server for AI assistants
 
 ```sh
 # Install
@@ -46,13 +46,16 @@ ai-changelog-mcp
 **Works:** Standalone CLI + MCP server for AI assistants  
 **Models:** GPT-4.1 series, o3/o4 reasoning models with smart auto-selection
 
+> **🎉 NEW in v2.4.0**: **Complete MCP Feature Parity** - MCP server now has 100% feature parity with CLI, including working directory changelog generation and file writing behavior!
+
 ---
 
 ## ✨ Features
 
 - 🤖 **AI-Powered**: Uses GPT-4.1 series, o3/o4 reasoning models with intelligent selection
-- 🔧 **Dual Mode**: Works as standalone CLI or MCP server for Claude Desktop and other AI tools
-- 📊 **Comprehensive Analysis**: Beyond commits - branches, dangling commits, untracked files
+- 🔧 **Dual Mode**: Works as standalone CLI or MCP server with **complete feature parity**
+- 📊 **Comprehensive Analysis**: Git commits + working directory changes + branches + dangling commits + untracked files
+- 📁 **File Generation**: Creates `AI_CHANGELOG.md` files with proper attribution in both CLI and MCP modes
 - 🎯 **Model Override**: Force specific models when needed (`--model gpt-4.1`, `--model o4`)
 - 🎮 **Interactive Mode**: Professional commit selection and analysis interface
 - ⚡ **Zero Config**: Works out of the box with intelligent fallbacks
@@ -336,9 +339,10 @@ When used as an MCP server, provides these tools for AI assistants:
 
 | Tool | Purpose | Parameters |
 |------|---------|------------|
-| `generate_changelog` | Generate AI changelog | `model`, `analysisMode`, `since`, `version`, `includeAttribution` |
+| `generate_changelog` | Generate AI changelog from commits + write file | `model`, `analysisMode`, `since`, `version`, `includeAttribution` |
+| `generate_changelog_from_changes` | **Generate AI changelog from working directory + write file** | `model`, `analysisMode`, `version`, `includeAttribution` |
 | `analyze_commits` | Analyze commit patterns | `limit`, `since` |
-| `analyze_current_changes` | Analyze staged/unstaged | `includeAIAnalysis` |
+| `analyze_current_changes` | Analyze staged/unstaged files | `includeAIAnalysis`, `includeAttribution` |
 | `analyze_branches` | Branch and unmerged analysis | `includeAllBranches` |
 | `analyze_comprehensive` | Full repository health | - |
 | `get_git_info` | Repository information | `includeStats` |
@@ -359,6 +363,16 @@ When used as an MCP server, provides these tools for AI assistants:
   }
 }
 
+// Generate changelog from working directory changes
+{
+  "name": "generate_changelog_from_changes",
+  "arguments": {
+    "model": "gpt-4.1",
+    "analysisMode": "detailed",
+    "includeAttribution": true
+  }
+}
+
 // Generate clean changelog without attribution
 {
   "name": "generate_changelog",
@@ -370,10 +384,12 @@ When used as an MCP server, provides these tools for AI assistants:
 
 // Comprehensive repository analysis
 {
-  "name": "analyze_comprehensive",
+  "name": "analyze_comprehensive", 
   "arguments": {}
-}
+  }
 ```
+
+> **📝 Note**: `generate_changelog` and `generate_changelog_from_changes` both write an `AI_CHANGELOG.md` file to the project root directory for feature parity with the CLI. This ensures consistent behavior and proper attribution regardless of how the changelog is consumed.
 
 ## 🎮 Interactive Mode Features
 
