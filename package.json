@@ -1,5 +1,5 @@
 {
-  "name": "@dominikospritis/ai-changelog-generator",
+  "name": "@idominikosgr/ai-changelog-generator",
   "version": "2.3.0",
   "description": "AI-powered changelog generator with MCP server support - works with OpenAI GPT-4.1 and Azure OpenAI with reasoning models",
   "main": "lib/ai-changelog-generator.js",
@@ -46,7 +46,7 @@
     "git:commits": "node lib/git-manager.js commits 10",
     "git:stats": "node lib/git-manager.js stats 5",
     "prepublishOnly": "npm run validate:mcp && npm run test",
-    "postinstall": "node -e \"console.log('\\n🎉 AI Changelog Generator installed!\\n\\n⚡ Quick Start:\\n  ai-changelog                 - Generate changelog\\n  ai-changelog --detailed      - Detailed analysis\\n  ai-changelog --interactive   - Interactive mode\\n  ai-changelog-mcp            - Start MCP server\\n\\n🤖 AI Models Supported:\\n  • GPT-4.1 series (1M context, 75% cost reduction)\\n  • o3/o4 reasoning models (Azure-only)\\n  • Automatic model selection\\n\\n📖 Docs: https://github.com/dominikospritis/ai-changelog-generator\\n')\""
+    "postinstall": "node -e \"console.log('\\n🎉 AI Changelog Generator installed!\\n\\n⚡ Quick Start:\\n  ai-changelog                 - Generate changelog\\n  ai-changelog --detailed      - Detailed analysis\\n  ai-changelog --interactive   - Interactive mode\\n  ai-changelog-mcp            - Start MCP server\\n\\n🤖 AI Models Supported:\\n  • GPT-4.1 series (1M context, 75% cost reduction)\\n  • o3/o4 reasoning models (Azure-only)\\n  • Automatic model selection\\n\\n📖 Docs: https://github.com/idominikosgr/AI-Git-Changelog-Generator\\n')\""
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.12.1",
@@ -82,17 +82,17 @@
     "ci-cd"
   ],
   "author": {
-    "name": "Dominikos Pritis",
-    "url": "https://github.com/dominikospritis"
+    "name": "idominikosgr",
+    "url": "https://github.com/idominikosgr"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dominikospritis/ai-changelog-generator.git"
+    "url": "git+https://github.com/idominikosgr/AI-Git-Changelog-Generator.git"
   },
   "bugs": {
-    "url": "https://github.com/dominikospritis/ai-changelog-generator/issues"
+    "url": "https://github.com/idominikosgr/AI-Git-Changelog-Generator/issues"
   },
-  "homepage": "https://github.com/dominikospritis/ai-changelog-generator#readme",
+  "homepage": "https://github.com/idominikosgr/AI-Git-Changelog-Generator#readme",
   "license": "MIT",
   "engines": {
     "node": ">=18.0.0"
@@ -102,7 +102,7 @@
   },
   "funding": {
     "type": "github",
-    "url": "https://github.com/sponsors/dominikospritis"
+    "url": "https://github.com/sponsors/idominikosgr"
   },
   "config": {
     "commitizen": {

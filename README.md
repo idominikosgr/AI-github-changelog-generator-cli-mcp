@@ -6,14 +6,14 @@
 </p>
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/@dominikospritis/ai-changelog-generator">
-    <img src="https://img.shields.io/npm/v/@dominikospritis/ai-changelog-generator.svg" alt="npm version">
+  <a href="https://www.npmjs.com/package/@idominikosgr/ai-changelog-generator">
+    <img src="https://img.shields.io/npm/v/@idominikosgr/ai-changelog-generator.svg" alt="npm version">
   </a>
-  <a href="https://github.com/dominikospritis/ai-changelog-generator/blob/main/LICENSE">
-    <img src="https://img.shields.io/npm/l/@dominikospritis/ai-changelog-generator.svg" alt="license">
+  <a href="https://github.com/idominikosgr/AI-Git-Changelog-Generator/blob/main/LICENSE">
+    <img src="https://img.shields.io/npm/l/@idominikosgr/ai-changelog-generator.svg" alt="license">
   </a>
   <a href="https://nodejs.org/">
-    <img src="https://img.shields.io/node/v/@dominikospritis/ai-changelog-generator.svg" alt="node version">
+    <img src="https://img.shields.io/node/v/@idominikosgr/ai-changelog-generator.svg" alt="node version">
   </a>
 </p>
 
@@ -35,10 +35,10 @@
 
 ```sh
 # Install globally for CLI use
-npm install -g @dominikospritis/ai-changelog-generator
+npm install -g @idominikosgr/ai-changelog-generator
 
 # Or locally in your project
-npm install @dominikospritis/ai-changelog-generator
+npm install @idominikosgr/ai-changelog-generator
 ```
 
 ### Basic Usage
@@ -490,7 +490,7 @@ npm run changelog -- --help # See all options
 # GitHub Actions example
 - name: Generate Changelog
   run: |
-    npx @dominikospritis/ai-changelog-generator --since ${{ github.event.before }}
+    npx @idominikosgr/ai-changelog-generator --since ${{ github.event.before }}
     git add CHANGELOG.md
     git commit -m "docs: update changelog"
 ```
@@ -503,8 +503,8 @@ This tool succeeds because it solves real problems simply:
 - **No configuration complexity** - Intelligent defaults, minimal setup  
 
 ```sh
-git clone https://github.com/dominikospritis/ai-changelog-generator
-cd ai-changelog-generator
+git clone https://github.com/idominikosgr/AI-Git-Changelog-Generator
+cd AI-Git-Changelog-Generator
 npm install
 npm test
 ```

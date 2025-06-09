@@ -110,7 +110,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - GPT-4.1 series support with 1M token context
   - Prompt caching for 75% cost reduction
   - Enhanced error handling and fallback mechanisms
-- **Package Namespace**: Scoped to `@dominikospritis/ai-changelog-generator`
+- **Package Namespace**: Scoped to `@idominikosgr/ai-changelog-generator`
 - **Import Resolution**: Relative paths for improved portability
 
 ### Fixed
