@@ -5,6 +5,63 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.5.0] - 2025-06-09
+
+### 🆕 Major Improvements
+
+**Repository Health Assessment & Commit Quality Analysis**
+- ✨ **NEW**: Added comprehensive repository health assessment with `--health` CLI flag and `assess_repository_health` MCP tool
+- ✨ **NEW**: Real-time commit message quality detection and scoring (8-point scale)
+- ✨ **NEW**: Automatic warnings for poor commit messages with actionable suggestions
+- ✨ **NEW**: Repository hygiene metrics including working directory status, commit frequency, and code diversity
+
+**Enhanced Error Handling & Resilience**
+- 🐛 **FIXED**: Graceful handling of missing files in git history (no more crashes on deleted/moved files)
+- 🐛 **FIXED**: Improved error recovery for git command failures
+- 🐛 **FIXED**: Better fallback analysis when git operations fail
+- ✨ **NEW**: Comprehensive warnings and recovery suggestions
+
+**Rule-Based Analysis Improvements**
+- ✨ **NEW**: Enhanced rule-based analysis that works without AI providers
+- ✨ **NEW**: Commit message quality warnings integrated into changelog output
+- ✨ **NEW**: Repository health recommendations in generated output
+- ✨ **NEW**: Better fallback behavior when AI analysis fails
+
+**MCP Server Enhancements**
+- ✨ **NEW**: Added `assess_repository_health` MCP tool for comprehensive health analysis
+- ✨ **NEW**: Repository health metrics accessible via MCP for AI assistants
+- ✨ **NEW**: Standardized JSON output format for health assessments
+- ✨ **NEW**: Configurable analysis depth and recommendations
+
+**Developer Experience**
+- ✨ **NEW**: Clearer CLI help text with health assessment options
+- ✨ **NEW**: Color-coded health scores and recommendations
+- ✨ **NEW**: Proactive suggestions for repository hygiene improvements
+- ✨ **NEW**: Better user guidance for poor commit message patterns
+
+### 🔧 Technical Enhancements
+
+- **Commit Message Analysis**: 8-point scoring system evaluating length, descriptiveness, conventional format compliance, and informational value
+- **Repository Health Metrics**: Comprehensive scoring including commit quality, working directory status, activity patterns, and code diversity
+- **Error Recovery**: Robust handling of git edge cases, deleted files, and command failures
+- **Fallback Analysis**: Improved rule-based analysis that provides value even without AI providers
+- **Attribution Updates**: Corrected repository references to match current GitHub location
+
+### 📊 Impact
+
+This release significantly improves the tool's reliability and usefulness by:
+- **Preventing crashes** from git edge cases and missing files
+- **Providing actionable insights** about repository health and commit quality
+- **Working reliably** even without AI provider configuration
+- **Offering proactive guidance** for better development practices
+
+### 🆙 Migration Notes
+
+- No breaking changes in this release
+- New `--health` flag available for CLI users
+- MCP users gain access to new `assess_repository_health` tool
+- All existing functionality remains unchanged
+
 ## [2.4.0] - 2025-01-13
 
 ### Added
