@@ -35,6 +35,7 @@ ai-changelog --interactive        # Interactive commit selection
 ai-changelog --detailed          # Comprehensive analysis  
 ai-changelog --model gpt-4.1      # Force specific AI model
 ai-changelog --since v1.0.0      # Generate since version/commit
+ai-changelog --no-attribution    # Disable attribution footer
 ai-changelog --help              # All options
 
 # Start MCP server for Claude Desktop
@@ -188,6 +189,27 @@ npm run changelog -- --model gpt-4.1-nano
 npm run changelog:detailed -- --model gpt-4.1-mini
 ```
 
+### Attribution Control
+
+```sh
+# Generate changelog with attribution footer (default)
+ai-changelog
+
+# Disable attribution footer for clean output (global install)
+ai-changelog --no-attribution
+# For npm scripts (local install)
+npm run changelog -- --no-attribution
+
+# Combined with other options (global install)
+ai-changelog --detailed --no-attribution
+ai-changelog --enterprise --since v1.0.0 --no-attribution
+```
+
+**About Attribution:**
+- By default, changelogs include a small footer: "Generated using [ai-github-changelog-generator-cli-mcp](https://github.com/idominikosgr/AI-github-changelog-generator-cli-mcp)"
+- Use `--no-attribution` flag for clean output without promotional footer
+- For MCP server, set `"includeAttribution": false` in tool parameters
+
 ## 🧠 Smart Model Selection
 
 The tool automatically selects the optimal model based on change complexity:
@@ -314,7 +336,7 @@ When used as an MCP server, provides these tools for AI assistants:
 
 | Tool | Purpose | Parameters |
 |------|---------|------------|
-| `generate_changelog` | Generate AI changelog | `model`, `analysisMode`, `since`, `version` |
+| `generate_changelog` | Generate AI changelog | `model`, `analysisMode`, `since`, `version`, `includeAttribution` |
 | `analyze_commits` | Analyze commit patterns | `limit`, `since` |
 | `analyze_current_changes` | Analyze staged/unstaged | `includeAIAnalysis` |
 | `analyze_branches` | Branch and unmerged analysis | `includeAllBranches` |
@@ -332,7 +354,17 @@ When used as an MCP server, provides these tools for AI assistants:
   "arguments": {
     "model": "gpt-4.1",
     "analysisMode": "detailed",
-    "since": "v1.0.0"
+    "since": "v1.0.0",
+    "includeAttribution": true
+  }
+}
+
+// Generate clean changelog without attribution
+{
+  "name": "generate_changelog",
+  "arguments": {
+    "model": "gpt-4.1",
+    "includeAttribution": false
   }
 }
 

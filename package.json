@@ -1,6 +1,6 @@
 {
   "name": "ai-github-changelog-generator-cli-mcp",
-  "version": "2.3.0",
+  "version": "2.3.1",
   "description": "AI-powered changelog generator with MCP server support - works with OpenAI GPT-4.1 and Azure OpenAI with reasoning models",
   "main": "lib/ai-changelog-generator.js",
   "types": "types/index.d.ts",

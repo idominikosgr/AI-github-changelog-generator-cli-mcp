@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.3.1] - 2025-01-08
+
+### Added
+- **Attribution Footer**: Added optional attribution footer to generated changelogs
+  - Displays link to the project: "Generated using [ai-github-changelog-generator-cli-mcp](https://github.com/idominikosgr/AI-github-changelog-generator-cli-mcp)"
+  - Enabled by default for promotional purposes while respecting user preferences
+  - CLI flag `--no-attribution` to disable attribution footer
+  - MCP parameter `includeAttribution: false` to disable attribution in MCP server
+  - Promotes the tool while providing opt-out option for users who prefer clean output
+
 ## [2.3.0] - 2025-01-08
 
 ### Added

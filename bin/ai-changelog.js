@@ -21,6 +21,7 @@ console.log('  --help, -h         Show this help');
 console.log('  --branches         Analyze all branches and unmerged commits');
 console.log('  --comprehensive    Comprehensive analysis including dangling commits');
 console.log('  --untracked        Include untracked files analysis');
+console.log('  --no-attribution   Disable attribution footer');
 
 // Run the CLI
 runCLI().catch(console.error);
