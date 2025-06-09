@@ -19,6 +19,34 @@
 
 ---
 
+## 🚀 TL;DR - Quick Start
+
+**What it does:** AI-powered changelog generation from git commits + MCP server for Claude Desktop
+
+```sh
+# Install
+npm install -g ai-github-changelog-generator-cli-mcp
+
+# Generate changelog
+ai-changelog
+
+# Key options
+ai-changelog --interactive        # Interactive commit selection
+ai-changelog --detailed          # Comprehensive analysis  
+ai-changelog --model gpt-4.1      # Force specific AI model
+ai-changelog --since v1.0.0      # Generate since version/commit
+ai-changelog --help              # All options
+
+# Start MCP server for Claude Desktop
+ai-changelog-mcp
+```
+
+**Requirements:** Node.js 18+, Git repository, OpenAI/Azure API key (optional)  
+**Works:** Standalone CLI + MCP server for AI assistants  
+**Models:** GPT-4.1 series, o3/o4 reasoning models with smart auto-selection
+
+---
+
 ## ✨ Features
 
 - 🤖 **AI-Powered**: Uses GPT-4.1 series, o3/o4 reasoning models with intelligent selection
