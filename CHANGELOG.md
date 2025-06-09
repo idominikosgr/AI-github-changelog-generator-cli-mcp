@@ -5,6 +5,57 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.5.1] - 2025-06-09
+
+### 🚀 **Point Release: Enhanced User Experience & Error Handling**
+
+This point release significantly improves the tool's reliability and user experience with cleaner output, better error handling, and enhanced repository insights.
+
+#### 🛠️ **Improvements**
+
+**Enhanced Error Handling & User Experience**
+- 🐛 **IMPROVED**: Git error messages now display clean, user-friendly warnings instead of raw technical output
+- 🐛 **IMPROVED**: Suppressed stderr output from git commands to eliminate noise 
+- 🐛 **IMPROVED**: Model availability errors show simplified messages with session-based deduplication
+- ✨ **NEW**: Added `execGitShow()` method for safer git operations with missing files
+- ✨ **NEW**: Graceful handling of deleted/renamed files with contextual messaging
+
+**Repository Health Enhancements**  
+- ✨ **NEW**: Added `--health` CLI flag for comprehensive repository health assessment
+- ✨ **NEW**: Added `assess_repository_health` MCP tool for AI assistants
+- ✨ **NEW**: 8-point commit message quality scoring system with real-time feedback
+- ✨ **NEW**: Repository hygiene recommendations and actionable insights
+- ✨ **NEW**: Health scoring (0-100) with categorization: Poor/Fair/Good/Excellent
+
+**Developer Experience**
+- ✨ **IMPROVED**: Cleaner console output with reduced error spam
+- ✨ **IMPROVED**: Better fallback messaging for model selection
+- ✨ **IMPROVED**: More informative warnings with actionable suggestions
+- ✨ **IMPROVED**: Enhanced rule-based analysis reliability without AI providers
+
+#### 🔧 **Technical Enhancements**
+
+- **Error Recovery**: Robust handling of git edge cases and command failures
+- **Output Sanitization**: Clean error messages without technical implementation details  
+- **Session Management**: Deduplicated warnings to prevent console spam
+- **Graceful Degradation**: Better fallback behavior when operations fail
+
+#### 📊 **Impact**
+
+- **No Breaking Changes**: Full backward compatibility maintained
+- **Improved Reliability**: Prevents crashes from git edge cases
+- **Better UX**: Professional, clean output suitable for all skill levels  
+- **Enhanced Insights**: Repository health provides actionable development guidance
+
+#### 🆙 **Migration Notes**
+
+- No migration required - all improvements are additive
+- New `--health` flag available for CLI users
+- MCP users gain access to `assess_repository_health` tool
+- All existing functionality works identically
+
+---
+
 ## [2.5.0] - 2025-06-09
 
 ### 🆕 Major Improvements

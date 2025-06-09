@@ -46,19 +46,22 @@ ai-changelog-mcp
 **Works:** Standalone CLI + MCP server for AI assistants  
 **Models:** GPT-4.1 series, o3/o4 reasoning models with smart auto-selection
 
-> **🎉 NEW in v2.4.0**: **Complete MCP Feature Parity** - MCP server now has 100% feature parity with CLI, including working directory changelog generation and file writing behavior!
+> **🎉 NEW in v2.5.1**: **Enhanced Reliability & Repository Health** - Added comprehensive repository health assessment, commit message quality scoring, improved error handling, and cleaner user experience!
+
+> **🔥 NEW in v2.4.0**: **Complete MCP Feature Parity** - MCP server now has 100% feature parity with CLI, including working directory changelog generation and file writing behavior!
 
 ---
 
 ## ✨ Features
 
 - 🤖 **AI-Powered**: Uses GPT-4.1 series, o3/o4 reasoning models with intelligent selection
+- 🏥 **Repository Health**: Comprehensive health assessment with commit quality scoring and hygiene recommendations
 - 🔧 **Dual Mode**: Works as standalone CLI or MCP server with **complete feature parity**
 - 📊 **Comprehensive Analysis**: Git commits + working directory changes + branches + dangling commits + untracked files
 - 📁 **File Generation**: Creates `AI_CHANGELOG.md` files with proper attribution in both CLI and MCP modes
 - 🎯 **Model Override**: Force specific models when needed (`--model gpt-4.1`, `--model o4`)
 - 🎮 **Interactive Mode**: Professional commit selection and analysis interface
-- ⚡ **Zero Config**: Works out of the box with intelligent fallbacks
+- ⚡ **Zero Config**: Works out of the box with intelligent fallbacks and enhanced error handling
 - 🔐 **Multi-Provider**: Supports both OpenAI and Azure OpenAI with auto-detection
 
 ## 🚀 Quick Start
@@ -111,13 +114,16 @@ Add to your Claude Desktop config:
 | Feature | CLI | MCP | AI-Powered | Status |
 |---------|-----|-----|------------|--------|
 | **Basic Changelog** | ✅ | ✅ | ✅ | Excellent |
+| **Repository Health** | ✅ | ✅ | ❌ | **NEW v2.5.1** - Excellent |
+| **Commit Quality Scoring** | ✅ | ✅ | ❌ | **NEW v2.5.1** - Excellent |
+| **Enhanced Error Handling** | ✅ | ✅ | ✅ | **NEW v2.5.1** - Excellent |
 | **Staged Changes** | ✅ | ✅ | ✅ | Excellent |
 | **Commit Analysis** | ✅ | ✅ | ✅ | Excellent |
-| **Branch Analysis** | ✅ | ✅ | ❌ | **NEW** - Good |
-| **Dangling Commits** | ✅ | ✅ | ❌ | **NEW** - Good |
-| **Untracked Files** | ✅ | ✅ | ❌ | **NEW** - Good |
+| **Branch Analysis** | ✅ | ✅ | ❌ | **NEW v2.4.0** - Good |
+| **Dangling Commits** | ✅ | ✅ | ❌ | **NEW v2.4.0** - Good |
+| **Untracked Files** | ✅ | ✅ | ❌ | **NEW v2.4.0** - Good |
 | **Interactive Mode** | ✅ | ❌ | ✅ | Excellent |
-| **Model Override** | ✅ | ✅ | ✅ | **NEW** - Excellent |
+| **Model Override** | ✅ | ✅ | ✅ | **NEW v2.4.0** - Excellent |
 | **Diff Analysis** | ✅ | ✅ | ✅ | Excellent |
 | **Smart Model Selection** | ✅ | ✅ | ✅ | Excellent |
 
@@ -227,6 +233,68 @@ The tool automatically selects the optimal model based on change complexity:
 
 > **💡 Tip**: Use `--model` to override smart selection for testing, cost optimization, or specific requirements.
 
+## 🏥 Repository Health Assessment (NEW v2.5.1)
+
+Comprehensive repository health analysis with actionable recommendations:
+
+```sh
+# Run health assessment (global install)
+ai-changelog --health
+
+# Or using npm scripts (local install)  
+npm run changelog -- --health
+```
+
+**What it analyzes:**
+- **Commit Quality**: 8-point scoring system for commit message quality
+- **Working Directory**: Clean status vs. uncommitted changes
+- **Recent Activity**: Commit frequency and patterns over last 30 days
+- **Code Diversity**: Number of different file types and categories
+- **Repository Hygiene**: Overall maintainability score
+
+**Sample Output:**
+```
+🏥 Repository Health Assessment
+==================================================
+Overall Health: EXCELLENT (84/100)
+
+📊 Health Metrics:
+  Commit Quality: good (7.6/8.0)
+  Working Directory: Has Changes  
+  Recent Activity: 14 commits (last 30 days)
+  Code Diversity: 2 categories
+
+⚠️  Issues Found:
+  • Working directory has uncommitted changes
+
+💡 Recommendations:
+  • Commit or stash pending changes
+  • Consider adding tests, documentation, or configuration
+```
+
+**MCP Server Usage:**
+```json
+{
+  "name": "assess_repository_health",
+  "arguments": {
+    "includeRecommendations": true,
+    "analyzeRecentCommits": 50
+  }
+}
+```
+
+**Commit Quality Scoring (8-point system):**
+- ✅ **Descriptive** (2 points): Clear, meaningful description  
+- ✅ **Length** (2 points): 10+ characters, not too verbose
+- ✅ **Informative** (2 points): Explains what changed and why
+- ✅ **Conventional Format** (2 points): Follows type(scope): description pattern
+
+**Health Score Ranges:**
+- **80-100**: Excellent - Well-maintained repository
+- **65-79**: Good - Minor improvements recommended  
+- **50-64**: Fair - Several areas need attention
+- **<50**: Poor - Significant improvements required
+
 ## 🛠️ Configuration
 
 ### Option 1: Environment Variables
@@ -304,6 +372,9 @@ ai-changelog --version v2.0.0  # Generate with specific version
 ai-changelog --since v1.5.0    # Generate since specific version
 ai-changelog --since HEAD~5    # Generate since specific commit
 
+# Repository health assessment  
+ai-changelog --health          # Comprehensive repository health report
+
 # Combinations
 ai-changelog --model o4 --detailed --since v1.0.0
 ai-changelog --interactive --enterprise
@@ -341,6 +412,7 @@ When used as an MCP server, provides these tools for AI assistants:
 |------|---------|------------|
 | `generate_changelog` | Generate AI changelog from commits + write file | `model`, `analysisMode`, `since`, `version`, `includeAttribution` |
 | `generate_changelog_from_changes` | **Generate AI changelog from working directory + write file** | `model`, `analysisMode`, `version`, `includeAttribution` |
+| `assess_repository_health` | **NEW: Comprehensive repository health assessment** | `includeRecommendations`, `analyzeRecentCommits` |
 | `analyze_commits` | Analyze commit patterns | `limit`, `since` |
 | `analyze_current_changes` | Analyze staged/unstaged files | `includeAIAnalysis`, `includeAttribution` |
 | `analyze_branches` | Branch and unmerged analysis | `includeAllBranches` |
