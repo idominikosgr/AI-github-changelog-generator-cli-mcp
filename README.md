@@ -6,14 +6,14 @@
 </p>
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/ai-changelog-generator-idominikosgr">
-    <img src="https://img.shields.io/npm/v/ai-changelog-generator-idominikosgr.svg" alt="npm version">
+  <a href="https://www.npmjs.com/package/ai-github-changelog-generator-cli-mcp">
+    <img src="https://img.shields.io/npm/v/ai-github-changelog-generator-cli-mcp.svg" alt="npm version">
   </a>
   <a href="https://github.com/idominikosgr/AI-Git-Changelog-Generator/blob/main/LICENSE">
-    <img src="https://img.shields.io/npm/l/ai-changelog-generator-idominikosgr.svg" alt="license">
+    <img src="https://img.shields.io/npm/l/ai-github-changelog-generator-cli-mcp.svg" alt="license">
   </a>
   <a href="https://nodejs.org/">
-    <img src="https://img.shields.io/node/v/ai-changelog-generator-idominikosgr.svg" alt="node version">
+    <img src="https://img.shields.io/node/v/ai-github-changelog-generator-cli-mcp.svg" alt="node version">
   </a>
 </p>
 
@@ -35,10 +35,10 @@
 
 ```sh
 # Install globally for CLI use
-npm install -g ai-changelog-generator-idominikosgr
+npm install -g ai-github-changelog-generator-cli-mcp
 
 # Or locally in your project
-npm install ai-changelog-generator-idominikosgr
+npm install ai-github-changelog-generator-cli-mcp
 ```
 
 ### Basic Usage
@@ -490,7 +490,7 @@ npm run changelog -- --help # See all options
 # GitHub Actions example
 - name: Generate Changelog
   run: |
-    npx ai-changelog-generator-idominikosgr --since ${{ github.event.before }}
+    npx ai-github-changelog-generator-cli-mcp --since ${{ github.event.before }}
     git add CHANGELOG.md
     git commit -m "docs: update changelog"
 ```
@@ -528,3 +528,9 @@ MIT - Use it however you want.
 **Made for developers who want better changelogs without the hassle.**
 
 *Your git repository tells a story. Let AI help you tell it better.*
+
+---
+
+## 📝 Copyright Notice
+
+All trademarks belong to their respective owners. This project is not affiliated with or endorsed by OpenAI, Microsoft Azure, GitHub, or any other mentioned companies or services.

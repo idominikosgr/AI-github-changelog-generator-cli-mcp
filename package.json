@@ -1,5 +1,5 @@
 {
-  "name": "ai-changelog-generator-idominikosgr",
+  "name": "ai-github-changelog-generator-cli-mcp",
   "version": "2.3.0",
   "description": "AI-powered changelog generator with MCP server support - works with OpenAI GPT-4.1 and Azure OpenAI with reasoning models",
   "main": "lib/ai-changelog-generator.js",
@@ -46,7 +46,7 @@
     "git:commits": "node lib/git-manager.js commits 10",
     "git:stats": "node lib/git-manager.js stats 5",
     "prepublishOnly": "npm run validate:mcp && npm run test",
-    "postinstall": "node -e \"console.log('\\n🎉 AI Changelog Generator installed!\\n\\n⚡ Quick Start:\\n  ai-changelog                 - Generate changelog\\n  ai-changelog --detailed      - Detailed analysis\\n  ai-changelog --interactive   - Interactive mode\\n  ai-changelog-mcp            - Start MCP server\\n\\n🤖 AI Models Supported:\\n  • GPT-4.1 series (1M context, 75% cost reduction)\\n  • o3/o4 reasoning models (Azure-only)\\n  • Automatic model selection\\n\\n📖 Docs: https://github.com/idominikosgr/AI-Git-Changelog-Generator\\n')\""
+    "postinstall": "node -e \"console.log('\\n🎉 AI Changelog Generator installed!\\n\\n⚡ Quick Start:\\n  ai-changelog                 - Generate changelog\\n  ai-changelog --detailed      - Detailed analysis\\n  ai-changelog --interactive   - Interactive mode\\n  ai-changelog-mcp            - Start MCP server\\n\\n🤖 AI Models Supported:\\n  • GPT-4.1 series (1M context, 75% cost reduction)\\n  • o3/o4 reasoning models (Azure-only)\\n  • Automatic model selection\\n\\n📖 Docs: https://github.com/idominikosgr/AI-Git-Changelog-Generator\\n\\n© All trademarks belong to their respective owners.\\n')\""
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.12.1",
