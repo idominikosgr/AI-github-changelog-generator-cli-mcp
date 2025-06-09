@@ -57,7 +57,7 @@
     "yargs": "^18.0.0"
   },
   "devDependencies": {
-    "@types/node": "^18.19.0"
+    "@types/node": "^22.15.30"
   },
   "keywords": [
     "changelog",
@@ -96,7 +96,7 @@
   "homepage": "https://github.com/idominikosgr/AI-github-changelog-generator-cli-mcp#readme",
   "license": "MIT",
   "engines": {
-    "node": ">=18.0.0"
+    "node": ">=22.0.0"
   },
   "peerDependencies": {
     "git": "*"
@@ -111,7 +111,7 @@
     }
   },
   "volta": {
-    "node": "20.18.0",
-    "npm": "10.8.2"
+    "node": "22.15.30",
+    "npm": "11.4.1"
   }
 }
