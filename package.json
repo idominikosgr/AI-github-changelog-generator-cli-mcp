@@ -1,44 +1,116 @@
 {
-  "name": "ai-changelog-generator",
-  "version": "1.0.0",
-  "description": "AI-powered changelog generator with git integration",
-  "main": "generate-ai-changelog.js",
+  "name": "@dominikospritis/ai-changelog-generator",
+  "version": "2.3.0",
+  "description": "AI-powered changelog generator with MCP server support - works with OpenAI GPT-4.1 and Azure OpenAI with reasoning models",
+  "main": "lib/ai-changelog-generator.js",
+  "types": "types/index.d.ts",
   "bin": {
-    "ai-changelog": "./generate-ai-changelog.js",
-    "ai-changelog-enhanced": "./enhanced-changelog-generator-v2.js"
+    "ai-changelog": "./bin/ai-changelog.js",
+    "ai-changelog-mcp": "./bin/ai-changelog-mcp.js"
   },
+  "files": [
+    "bin/",
+    "lib/",
+    "examples/",
+    "types/",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
   "scripts": {
-    "start": "node cli.js",
-    "changelog": "node generate-ai-changelog.js",
-    "enhanced": "node enhanced-changelog-generator-v2.js",
-    "demo": "node demo-interactive-changelog.js",
-    "test": "node test-ai-provider.js",
-    "setup": "node setup-azure-openai.js",
-    "config:create": "node config.js create-sample",
-    "config:validate": "node config.js validate",
-    "templates:test": "node templates.js",
-    "git:info": "node git-manager.js info"
+    "start": "node bin/ai-changelog.js",
+    "changelog": "node bin/ai-changelog.js",
+    "changelog:detailed": "node bin/ai-changelog.js --detailed",
+    "changelog:enterprise": "node bin/ai-changelog.js --enterprise",
+    "changelog:interactive": "node bin/ai-changelog.js --interactive",
+    "changelog:analyze": "node bin/ai-changelog.js --analyze",
+    "changelog:preview": "node bin/ai-changelog.js --dry-run",
+    "changelog:no-color": "node bin/ai-changelog.js --no-color",
+    "mcp": "node bin/ai-changelog-mcp.js",
+    "mcp:start": "node bin/ai-changelog-mcp.js",
+    "demo": "node examples/demo-interactive-changelog.js",
+    "test": "node test/test-ai-provider.js",
+    "test:models": "node test/test-model-selection.js",
+    "test:enhanced": "node test/test-enhanced-features.js",
+    "test:new-features": "node test/test-new-features.js",
+    "test:mcp": "node test/test-mcp-server.js",
+    "test:git": "node lib/git-manager.js info",
+    "validate:mcp": "node test/validate-mcp.js",
+    "setup": "node scripts/setup-azure-openai.js",
+    "config:create": "node lib/config.js create-sample",
+    "config:validate": "node lib/config.js validate",
+    "config:test-models": "node lib/config.js model-test",
+    "providers:test": "node test/test-ai-provider.js",
+    "providers:validate": "node test/test-enhanced-features.js",
+    "git:info": "node lib/git-manager.js info",
+    "git:commits": "node lib/git-manager.js commits 10",
+    "git:stats": "node lib/git-manager.js stats 5",
+    "prepublishOnly": "npm run validate:mcp && npm run test",
+    "postinstall": "node -e \"console.log('\\n🎉 AI Changelog Generator installed!\\n\\n⚡ Quick Start:\\n  ai-changelog                 - Generate changelog\\n  ai-changelog --detailed      - Detailed analysis\\n  ai-changelog --interactive   - Interactive mode\\n  ai-changelog-mcp            - Start MCP server\\n\\n🤖 AI Models Supported:\\n  • GPT-4.1 series (1M context, 75% cost reduction)\\n  • o3/o4 reasoning models (Azure-only)\\n  • Automatic model selection\\n\\n📖 Docs: https://github.com/dominikospritis/ai-changelog-generator\\n')\""
   },
   "dependencies": {
-    "chalk": "^4.1.2",
-    "dotenv": "^16.0.3",
-    "inquirer": "^9.2.0",
-    "yargs": "^17.7.0"
+    "@modelcontextprotocol/sdk": "^1.12.1",
+    "chalk": "^5.4.1",
+    "dotenv": "^16.5.0",
+    "inquirer": "^12.6.3",
+    "openai": "^5.1.1",
+    "yargs": "^18.0.0"
   },
   "devDependencies": {
-    "jest": "^29.7.0"
-  },
+    "@types/node": "^22.15.30"  },
   "keywords": [
     "changelog",
     "git",
     "ai",
     "automation",
     "openai",
-    "azure"
+    "azure",
+    "gpt-4.1",
+    "reasoning-models",
+    "o3",
+    "o3-mini",
+    "o4",
+    "o4-mini",
+    "mcp",
+    "model-context-protocol",
+    "claude",
+    "cli",
+    "commit-analysis",
+    "semantic-versioning",
+    "release-notes",
+    "devops",
+    "ci-cd"
   ],
-  "author": "Your Name",
+  "author": {
+    "name": "Dominikos Pritis",
+    "url": "https://github.com/dominikospritis"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dominikospritis/ai-changelog-generator.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dominikospritis/ai-changelog-generator/issues"
+  },
+  "homepage": "https://github.com/dominikospritis/ai-changelog-generator#readme",
   "license": "MIT",
   "engines": {
-    "node": ">=14.0.0"
+    "node": ">=18.0.0"
+  },
+  "peerDependencies": {
+    "git": "*"
+  },
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/dominikospritis"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "volta": {
+    "node": "20.18.0",
+    "npm": "10.8.2"
   }
 }

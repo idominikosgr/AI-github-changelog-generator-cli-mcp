@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
 /**
- * Interactive Azure OpenAI setup script for MyRoomie changelog generation
- * This script helps configure Azure OpenAI credentials for enhanced AI changelog generation
+ * Interactive Azure OpenAI setup script for AI Changelog Generator
+ * Enhanced for GPT-4.1 series and reasoning models
  */
 
 const readline = require('readline');
@@ -21,7 +21,7 @@ function question(prompt) {
 }
 
 async function main() {
-  console.log('🚀 Azure OpenAI Setup for MyRoomie Changelog Generation\n');
+  console.log('🚀 Azure OpenAI Setup for AI Changelog Generator\n');
 
   console.log('This script will help you configure Azure OpenAI for enhanced changelog generation.');
   console.log('You\'ll need to have an Azure OpenAI resource already created.\n');
@@ -31,9 +31,9 @@ async function main() {
     console.log('\n📚 Please follow these steps first:');
     console.log('1. Go to https://portal.azure.com');
     console.log('2. Search for "OpenAI" and create a new resource');
-    console.log('3. Deploy a GPT-4 model in your resource');
+    console.log('3. Deploy a GPT-4.1 model in your resource');
     console.log('4. Come back and run this script again');
-    console.log('\n📖 See docs/AZURE_OPENAI_SETUP.md for detailed instructions');
+    console.log('\n📖 See README.md for detailed instructions');
     process.exit(0);
   }
 
@@ -41,13 +41,18 @@ async function main() {
 
   const endpoint = await question('Azure OpenAI Endpoint (e.g., https://your-resource.openai.azure.com/): ');
   const apiKey = await question('Azure OpenAI API Key: ');
-  const deploymentName = await question('Primary Deployment Name (e.g., gpt-4o): ');
-  const apiVersion = await question('API Version [2024-02-15-preview]: ') || '2024-02-15-preview';
+  const deploymentName = await question('Primary Deployment Name (e.g., gpt-4.1): ');
+  const apiVersion = await question('API Version [2025-04-01-preview]: ') || '2025-04-01-preview';
 
   console.log('\n🎯 Model Configuration (press Enter for recommended defaults):');
   const modelDefault = await question(`Default model [${deploymentName}]: `) || deploymentName;
-  const modelSimple = await question('Simple commits model [gpt-4o-mini]: ') || 'gpt-4o-mini';
-  const modelComplex = await question('Complex commits model [o3-mini]: ') || 'o3-mini';
+  const modelSimple = await question('Simple commits model [gpt-4.1-mini]: ') || 'gpt-4.1-mini';
+  const modelNano = await question('Minimal commits model [gpt-4.1-nano]: ') || 'gpt-4.1-nano';
+  const modelComplex = await question('Complex commits model [gpt-4.1]: ') || 'gpt-4.1';
+  const modelReasoning = await question('Latest reasoning model [o4-mini]: ') || 'o4-mini';
+  const modelAdvanced = await question('Latest advanced reasoning model [o4]: ') || 'o4';
+  const modelReasoningLegacy = await question('Legacy reasoning model [o3-mini]: ') || 'o3-mini';
+  const modelAdvancedLegacy = await question('Legacy advanced reasoning model [o3]: ') || 'o3';
 
   // Validate inputs
   if (!endpoint || !apiKey || !deploymentName) {
@@ -75,19 +80,25 @@ AZURE_OPENAI_ENDPOINT=${endpoint}
 AZURE_OPENAI_KEY=${apiKey}
 AZURE_OPENAI_DEPLOYMENT_NAME=${deploymentName}
 AZURE_OPENAI_API_VERSION=${apiVersion}
+AZURE_OPENAI_USE_V1_API=true
 
 # Smart Model Selection for Changelog Generation
 AI_PROVIDER=azure
 AI_MODEL=${modelDefault}
 AI_MODEL_SIMPLE=${modelSimple}
+AI_MODEL_NANO=${modelNano}
 AI_MODEL_COMPLEX=${modelComplex}
-AI_MODEL_REASONING=o1
+AI_MODEL_REASONING=${modelReasoning}
+AI_MODEL_ADVANCED_REASONING=${modelAdvanced}
+AI_MODEL_REASONING_LEGACY=${modelReasoningLegacy}
+AI_MODEL_ADVANCED_REASONING_LEGACY=${modelAdvancedLegacy}
 `;
 
   // Remove existing Azure OpenAI config if present
   envContent = envContent.replace(/# Azure OpenAI Configuration[\s\S]*?(?=\n\n|\n#|$)/g, '');
   envContent = envContent.replace(/AZURE_OPENAI_.*?=.*?\n/g, '');
   envContent = envContent.replace(/AI_PROVIDER=.*?\n/g, '');
+  envContent = envContent.replace(/AI_MODEL.*?=.*?\n/g, '');
 
   // Add new config
   envContent = envContent.trim() + azureConfig;
@@ -99,22 +110,33 @@ AI_MODEL_REASONING=o1
   console.log('\n🧪 Testing your configuration...\n');
 
   // Test the configuration
-  const AIProvider = require('./ai-provider');
-  require('dotenv').config({ path: '.env.local' });
-
   try {
+    const AIProvider = require('../lib/ai-provider');
+    require('dotenv').config({ path: '.env.local' });
+
     const provider = new AIProvider();
     const testResult = await provider.testConnection();
 
     if (testResult.success) {
       console.log('🎉 SUCCESS! Azure OpenAI connection working!');
       console.log(`   Model: ${testResult.model}`);
-      console.log(`   Provider: ${testResult.provider}`);
+      console.log(`   Provider: Azure OpenAI`);
+
+      // Test model availability
+      console.log('\n🔍 Testing model availability...');
+      const modelInfo = await provider.getAvailableAzureModels();
+      if (modelInfo.success) {
+        console.log(`✅ Found ${modelInfo.models.length} available models`);
+        modelInfo.models.forEach(model => {
+          console.log(`   • ${model.name}`);
+        });
+      }
 
       console.log('\n🚀 You can now use enhanced AI changelog generation:');
-      console.log('   npm run changelog:ai        # Generate AI-powered changelog');
-      console.log('   npm run changelog:ai-test   # Test AI provider');
-      console.log('   npm run changelog:analyze   # Analyze current changes');
+      console.log('   ai-changelog                    # Generate AI-powered changelog');
+      console.log('   ai-changelog --detailed         # Comprehensive analysis');
+      console.log('   ai-changelog --model gpt-4.1    # Force specific model');
+      console.log('   ai-changelog --interactive      # Interactive mode');
 
     } else {
       console.log('❌ Connection test failed:');

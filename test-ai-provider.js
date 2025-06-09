@@ -3,7 +3,7 @@
 // Load environment variables from .env.local
 require('dotenv').config({ path: '.env.local' });
 
-const AIProvider = require('./ai-provider');
+const AIProvider = require('./lib/ai-provider');
 
 /**
  * Test script to verify AI provider configuration
