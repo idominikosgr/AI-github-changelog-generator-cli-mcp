@@ -1,3 +1,5 @@
+[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/idominikosgr-ai-github-changelog-generator-cli-mcp-badge.png)](https://mseep.ai/app/idominikosgr-ai-github-changelog-generator-cli-mcp)
+
 # 🚀 AI Changelog Generator
 
 <p align="center">
